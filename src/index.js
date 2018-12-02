@@ -1,34 +1,29 @@
 import React, { Component, Fragment } from "react";
 import { render } from "react-dom";
-import PropTypes from "prop-types";
 
-class Button extends Component {
-  render() {
-    return (
-      <a href="" onClick={this.props.onClick}>
-        {this.props.children}
-      </a>
-    );
-  }
-}
+import Button from "./Button";
 
-Button.defaultProps = {
-  children: "Salvar"
-};
+import "./style.scss";
 
-Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  children: PropTypes.string
-};
 class App extends Component {
-  handleClick() {
-    alert("botao clicado");
-  }
+  state = {
+    counter: 0
+  };
+
+  componentDidMount() {}
+
+  componentDidUpdate(prevProps, prevState) {}
+
+  componentWillUnmount() {}
+
+  handleClick = () => {
+    this.setState({ counter: this.state.counter + 1 });
+  };
   render() {
     return (
       <Fragment>
-        <h1>Hello modulo 1</h1>;
-        <Button onClick={() => alert("Button 1")} />
+        <h1>Hello modulo 1</h1>
+        <h2>{this.state.counter}</h2>
         <Button onClick={this.handleClick}>Enviar</Button>
       </Fragment>
     );
